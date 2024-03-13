@@ -25,7 +25,7 @@ a, b, k = map(int, input().split())
 max_win = predskazatel(num_, sectors, a, b, k)
 print(max_win)'''
 
-def max_win(n, numbers, a, b, k):
+'''def max_win(n, numbers, a, b, k):
     max_win = 0
     for i in range(n):
         if max_win < numbers[i]:
@@ -37,5 +37,25 @@ numbers = list(map(int, input().split()))
 a, b, k = map(int, input().split())
 
 max_win = max_win(n, numbers, a, b, k)
-print(max_win)
+print(max_win)'''
 
+def winner(n, sec, a, b, k):
+    max_ = 0
+    for i in range(n):
+        v = a
+        cur_ = sec[i]
+        for j in range(i+1, i+n):
+            sector = sec[j % n]
+            if v <= k:
+                break
+            cur_ = sector
+            v -= k
+            v = min(v + 1, b)
+        max_ = max(max_, cur_)
+    return max_
+
+n = int(input())
+sec = list(map(int, input().split()))
+a, b, k = map(int, input().split())
+result = winner(n, sec, a, b, k)
+print(result)
