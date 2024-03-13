@@ -39,7 +39,7 @@ a, b, k = map(int, input().split())
 max_win = max_win(n, numbers, a, b, k)
 print(max_win)'''
 
-def winner(n, sec, a, b, k):
+'''def winner(n, sec, a, b, k):
     max_ = 0
     for i in range(n):
         v = a
@@ -52,10 +52,25 @@ def winner(n, sec, a, b, k):
             v -= k
             v = min(v + 1, b)
         max_ = max(max_, cur_)
-    return max_
+    return max_'''
 
+def calculate_max_win(n, sectors, a, b, k):
+    na = (a - 1) // k
+    nb = (b - 1) // k
+    max_win = max(sectors)
+
+    if na + n - 1 >= nb:
+        return max_win
+    else:
+        return max_win
+
+# Чтение входных данных
 n = int(input())
-sec = list(map(int, input().split()))
+sectors = list(map(int, input().split()))
 a, b, k = map(int, input().split())
-result = winner(n, sec, a, b, k)
-print(result)
+
+# Вычисление максимального выигрыша
+max_win = calculate_max_win(n, sectors, a, b, k)
+
+# Вывод результата
+print(max_win)
