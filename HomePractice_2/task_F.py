@@ -62,7 +62,12 @@ def calculate_max_win(n, sectors, a, b, k):
     if na + n - 1 >= nb:
         return max_win
     else:
-        return max_win
+        start_sector = na % n
+        end_sector = nb % n
+        if start_sector <= end_sector:
+            return max(sectors[start_sector:end_sector + 1])
+        else:
+            return max(sectors[start_sector:] + sectors[:end_sector + 1])
 
 # Чтение входных данных
 n = int(input())
@@ -74,3 +79,7 @@ max_win = calculate_max_win(n, sectors, a, b, k)
 
 # Вывод результата
 print(max_win)
+
+'''
+В последствии решил задачу с помощью кода experemental/exp_e.py
+'''
